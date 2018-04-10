@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0d000000"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.ActionMenuView
+                android:id="@+id/actionMenuView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity = "center"
+                android:fitsSystemWindows="true">
+            </android.support.v7.widget.ActionMenuView>
+        </android.support.v7.widget.Toolbar>
+
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="90dp"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_position"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:textSize="20dp"
+                    android:textColor="#F8F8FF"/>
+            </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#3a000000"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp">
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                >
+
+                <EditText
+                    android:id="@+id/goodsName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="物品名称："
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    />
+                <EditText
+                    android:id="@+id/goodsprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="物品价格:"
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="6dp"/>
+                <EditText
+                    android:id="@+id/goodAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="购买地点:"
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="6dp"/>
+                <EditText
+                    android:id="@+id/goodsDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="送达地点:"
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="6dp"/>
+                <EditText
+                    android:id="@+id/goodsRemark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="备注:"
+                    android:textColorHint="#CCCCCC"
+                    android:textColor="#FFFFFF"
+                    android:layout_margin="6dp"/>
+                <android.support.v7.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1.5dp"
+                    app:cardBackgroundColor="#3a000000"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    >
+                    <Button
+                        android:id="@+id/goodsRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="发布订单"
+                        android:textSize="25dp"
+                        android:textColor="#EEEEE0"
+                        android:layout_margin="10dp"
+                        android:background="#00000000"/>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/background">
+
+    </android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>

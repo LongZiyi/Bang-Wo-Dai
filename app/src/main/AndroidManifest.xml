@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.myone">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    //支付宝
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    //Bmob
+
+    //百度鹰眼
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入对象存储BOS数据 -->
+    <!-- 访问网络，网络定位需要上网 -->
+    <!-- SD卡读取权限，用于写入对象存储BOS数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 用于加快GPS首次定位 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于Android M及以上系统，申请加入忽略电池优化白名单 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- BmobSDK所需的权限 -->
+    <!-- 推送所需的权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".ShareActivity" />
+        <activity android:name=".EditActivity" />
+        //百度鹰眼,android:exported="true"
+        <service
+            android:name="com.baidu.trace.LBSTraceService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+        //百度地图
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        //Bmob推送
+        <service
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":bmobpush">
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <!-- 用于进程保活 -->
+        <service
+            android:name="cn.bmob.push.lib.service.PushNotifyService"
+            android:process=":bmobpush" />
+
+        <receiver android:name="cn.bmob.push.PushReceiver">
+            <intent-filter>
+
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 第四部中创建的消息接收器，在这里进行注册 -->
+        <receiver android:name=".MyPushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 -->
+        <receiver
+            android:name="cn.bmob.push.PushNotifyReceiver"
+            android:process=":bmobpush">
+            <intent-filter>
+
+                <!-- 接收心跳广播的action -->
+                <action android:name="cn.bmob.push.action.HEARTBEAT" />
+                <!-- 接收唤醒广播的action -->
+                <action android:name="cn.bmob.push.action.NOTIFY" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="XiSdM3Y53P8o2Q5YlI1SZax1cGCilxIO" />
+        //key:开发者申请的Key
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.administrator.myone.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ShareDetailedActivity" />
+        //支付宝
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".DelayActivity" />
+        <activity android:name=".CreditActivity" />
+        <activity android:name=".ApplyCreditActivity" />
+
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".PushOrderActivity" />
+        <activity android:name=".MapActivity" />
+        <activity android:name=".UserMapActivity" />
+        <activity android:name=".OrderDetailedActivity" />
+        <activity android:name=".ForgetkeyActivity" />
+        <activity android:name=".ChatActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backgroundlogin"
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/forgetkey_phonenum"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:layout_height="wrap_content"
+            android:hint="手机号:"
+            android:textSize="23dp"
+            android:textColorHint="#CCCCCC"
+            android:textColor="#CCCCCC" />
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#3a000000">
+            <Button
+                android:id="@+id/forgetkey_setcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="获取验证码"
+                android:textColor="#FFEFD5"
+                android:textSize="12sp" />
+        </android.support.v7.widget.CardView>
+
+   </LinearLayout>
+
+    <EditText
+        android:id="@+id/forgetkey_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="验证码:"
+        android:textSize="23dp"
+        android:textColorHint="#CCCCCC"
+        android:textColor="#CCCCCC"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    <EditText
+        android:id="@+id/forgetkey_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="新密码:"
+        android:textSize="23dp"
+        android:textColorHint="#CCCCCC"
+        android:textColor="#CCCCCC"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="textPassword"
+        />
+    <EditText
+        android:id="@+id/forgetkey_pwdsure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="确认密码:"
+        android:textSize="23dp"
+        android:textColorHint="#CCCCCC"
+        android:textColor="#CCCCCC"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="textPassword" />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1.5dp"
+        app:cardBackgroundColor="#af00BFFF"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/forgetkey_nextfoot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="修改密码"
+            android:textSize="20dp"
+            android:textColor="#EEEEE0"
+            android:layout_margin="0dp"
+            android:background="#00000000"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

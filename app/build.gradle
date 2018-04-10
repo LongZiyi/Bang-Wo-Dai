@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    useLibrary 'org.apache.http.legacy'//Bmob
+
+
+    defaultConfig {
+        applicationId "com.example.administrator.myone"
+        minSdkVersion 24
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+    //删除META-INF信息
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.properties'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.properties'
+        exclude 'META-INF/maven/com.google.code.gson/gson/pom.xml'
+        exclude 'META-INF/maven/com.google.code.gson/gson/pom.properties'
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:25.3.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:percent:25.3.1'
+    //compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile files('libs/alipaySdk-20170623-proguard.jar')
+    compile 'cn.bmob.android:bmob-sdk:3.5.6'
+    //Bmob
+//    compile 'cn.bmob.android:http-legacy:1.0'
+    //Bmob
+//    compile files('libs/BmobSDK_3.5.6_20170705.jar')
+    compile 'cn.bmob.android:bmob-push:1.0.0'
+    compile 'cn.bmob.android:bmob-sms:1.0.1'
+
+}

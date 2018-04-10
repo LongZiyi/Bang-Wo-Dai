@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/nav_news"
+            android:title="消息中心"
+            android:titleCondensed=""
+
+            />
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/nav_wallet"
+            android:title="我的钱包"/>
+        <item
+            android:id="@+id/nav_credit"
+            android:icon="@drawable/nav_credit"
+            android:title="信用服务"/>
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/nav_history"
+            android:title="历史足迹"/>
+        <item
+            android:id="@+id/nav_skin"
+            android:icon="@drawable/nav_skin"
+            android:title="更换皮肤"/>
+
+    </group>
+</menu>
